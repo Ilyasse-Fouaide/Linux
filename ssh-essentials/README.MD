@@ -11,7 +11,7 @@ This section will cover how to generate SSH keys on a client machine and distrib
 Generating a new SSH public and private key pair on your local computer is the first step towards authenticating with a remote server without a password
 
 ```sh
-ssh-keygen
+$ ssh-keygen
   # You can use the -t option to specify the type of key to create.
 $ ssh-keygen -t rsa
   # You can use the -b option to specify the length (bit size) of the key
@@ -37,6 +37,12 @@ You can copy the public key to the remote server using the following command.
 $ ssh-copy-id -i ~/.ssh/id_25519.pub user@host-ip-address
   # with rsa key pairs
 $ ssh-copy-id -i ~/.ssh/id_rsa.pub user@host-ip-address
+```
+
+### Log In to Your Remote Server
+
+```bash
+$ ssh -i ~/.ssh/id_rsa user@host-ip-address
 ```
 
 To avoid having to do this every time you log in to your remote server, you can create or edit a configuration file in the ~/.ssh directory within the home directory of your local computer.
@@ -67,7 +73,7 @@ $ ssh any_name
 ```bash
 $ scp /path/to/your/pub_key_file user@host-ip-addr:/home/user/.ssh/authorized_keys
   # e.g, with random ip addr
-$ scp ~/.ssh/id_rsa root@192.168.1.34:/home/user/.ssh/authorized_keys
+$ scp ~/.ssh/id_rsa.pub root@192.168.1.34:/home/user/.ssh/authorized_keys
   # if you want to copy for example image file from your local machine ↩
   # ↪ into your server
 $ scp -i ~/.ssh/id_rsa /path/to/your/image.png root@192.168.1.34:/home/user/Pictures/
