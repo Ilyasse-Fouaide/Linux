@@ -62,8 +62,20 @@ Host any_name
 $ ssh any_name
 ```
 
+### Copying your Public SSH Key to a Server with SCP
+
+```bash
+$ scp /path/to/your/pub_key_file user@host-ip-addr:/home/user/.ssh/authorized_keys
+  # e.g, with random ip addr
+$ scp ~/.ssh/id_rsa root@192.168.1.34:/home/user/.ssh/authorized_keys
+  # if you want to copy for example image file from you're local machine ↩
+  # ↪ into your server
+$ scp -i ~/.ssh/id_rsa /path/to/your/image.png root@192.168.1.34:/home/user/Pictures/
+```
+
 The ssh-copy-id command is an excellent tool to copy ssh public to the remote server securely.
 This will connect to the remote host, authenticate with your credentials, and execute the command you specified. The connection will immediately close afterwards.
+
 
 ### Server-Side Configuration Options
 
