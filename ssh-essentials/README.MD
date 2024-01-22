@@ -10,7 +10,7 @@ This section will cover how to generate SSH keys on a client machine and distrib
 
 Generating a new SSH public and private key pair on your local computer is the first step towards authenticating with a remote server without a password
 
-```
+```bash
 $ ssh-keygen
   # You can use the -t option to specify the type of key to create.
 $ ssh-keygen -t rsa
