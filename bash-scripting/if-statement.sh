@@ -37,13 +37,14 @@ fi
 #- seperate file
 echo "---------------------------------";
 
-command=/usr/bin/htop;
+command=htop;
+commandPath=/usr/bin/$command;
 
 # check if htop command exists
-if [ ! -f $command ]; then
-  echo -e "command does not exists.\nintall it ? sudo apt install htop";
+if [ ! -f $commandPath ]; then
+  echo -e "command $command does not exists.\nintall it ? sudo apt install $command";
 else
-  htop
+  echo -e "the \033[32m$command\033[00m command found..."
 fi
 
 ### more checks:
