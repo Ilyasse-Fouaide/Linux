@@ -78,5 +78,6 @@ fi
 # [ -gt ]:    greater then
 # [ -lt ]:    less then
 # [ -f ]:     file existing
+# [ -d ]:     checking if the directory exists
 # [ -n ]:     check if the lenght of the string is non zero
 # [ -z ]:     check if the lenght of the string is zero
