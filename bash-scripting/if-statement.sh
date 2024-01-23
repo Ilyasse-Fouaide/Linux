@@ -47,9 +47,23 @@ else
   echo -e "the \033[32m$command\033[00m command found..."
 fi
 
-### more checks:
-# -eq:  equal
-# -ne:  not equal
-# -gt:  greater then
-# -lt:  less then
-# +f:   file existing
+#- seperate file
+echo "---------------------------------";
+
+str="";
+
+# check the length of the string is non zero
+if [[ -n $str ]]; then
+  echo "the string is not empty.";
+else
+  echo "the string is empty."
+fi
+
+### more checks: ###
+# [ -eq ]:    equal
+# [ -ne ]:    not equal
+# [ -gt ]:    greater then
+# [ -lt ]:    less then
+# [ -f ]:     file existing
+# [[ -n ]]:   check if the lenght of the string is non zero
+# [[ -z ]]:   check if the lenght of the string is zero
