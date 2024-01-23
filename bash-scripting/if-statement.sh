@@ -34,8 +34,21 @@ else
   echo "your git repository doesn't exists";
 fi
 
+#- seperate file
+echo "---------------------------------";
+
+command=/usr/bin/htop;
+
+# check if htop command exists
+if [ ! -f $command ]; then
+  echo -e "command does not exists.\nintall it ? sudo apt install htop";
+else
+  htop
+fi
+
 ### more checks:
-# -eq: equal
-# -ne: not equal
-# -gt: greater then
-# -lt: less then
+# -eq:  equal
+# -ne:  not equal
+# -gt:  greater then
+# -lt:  less then
+# +f:   file existing
