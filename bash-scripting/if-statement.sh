@@ -53,10 +53,23 @@ echo "---------------------------------";
 str="";
 
 # check the length of the string is non zero
-if [[ -n $str ]]; then
+if [ -n "$str" ]; then
   echo "the string is not empty.";
 else
   echo "the string is empty."
+fi
+
+#- seperate file
+echo "---------------------------------";
+
+str1="ilyasse";
+str2="ilyasse";
+
+# or you can use it like this '!=', not equal
+if [ "$str1" == "$str2" ]; then
+  echo "$str1 are equal to $str2";
+else
+  echo "$str1 are not equal to $str2";
 fi
 
 ### more checks: ###
@@ -65,5 +78,5 @@ fi
 # [ -gt ]:    greater then
 # [ -lt ]:    less then
 # [ -f ]:     file existing
-# [[ -n ]]:   check if the lenght of the string is non zero
-# [[ -z ]]:   check if the lenght of the string is zero
+# [ -n ]:     check if the lenght of the string is non zero
+# [ -z ]:     check if the lenght of the string is zero
