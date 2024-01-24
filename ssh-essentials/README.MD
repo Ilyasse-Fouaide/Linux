@@ -125,14 +125,14 @@ $ eval $(ssh-agent)
 # --- you can verify with this command ---
 $ ps -aux | grep ssh-agent
 # output:
-user     3497  0.0  0.1   7976  5632 ?        S    10:02   0:00 /usr/bin/ssh-agent -D -a /run/user/1000/keyring/.ssh
-user     9014  0.0  0.0   7976  1908 ?        Ss   19:29   0:00 ssh-agent
+> user     3497  0.0  0.1   7976  5632 ?        S    10:02   0:00 /usr/bin/ssh-agent -D -a /run/user/1000/keyring/.ssh
+> user     9014  0.0  0.0   7976  1908 ?        Ss   19:29   0:00 ssh-agent
 # --- or you can verify with this commands
 echo $SSH_AGENT_PID
 echo $SSH_AUTH_SOCK
 # output
-9014
-/tmp/ssh-Jln2ng5l98v4/agent.9014
+> 9014
+> /tmp/ssh-Jln2ng5l98v4/agent.9014
 ```
 
 2. Add your private key to the `ssh-agent`
@@ -146,7 +146,7 @@ $ ssh-add ~/.ssh/id_ed25519
 ```bash
 $ ssh-add -l
 # output
-256 SHA256:<KEY_ID> example-user@localhost (ED25519)
+> 256 SHA256:<KEY_ID> example-user@localhost (ED25519)
 ```
 
 4. Try to connect to your remote server without asking for `passphrase` in every time
@@ -157,3 +157,36 @@ $ ssh -i ~/.ssh/id_25519 user@host-ip-address
 
 > [!IMPORTANT]  
 > The ssh agent allow you to to cache you private key, that way you need to type your `passphrase` once per your terminal session, if you exit your terminal and enter again you need to start the `ssh-agent` again and add your private key to the agent
+
+### Explain `eval $(ssh-agent)`
+
+`eval` is for evaluating and executing expressions as commands.
+
+```bash
+$ x=pwd
+$ echo $x
+# output
+> pwd
+$ eval $x
+# output
+> /home/user
+```
+
+To understand what `ssh-agent` command do lets print it out:
+
+```bash
+$ echo $(ssh-agent)
+# output
+> SSH_AUTH_SOCK=/tmp/ssh-XXXXXXVSIpuN/agent.9619; export SSH_AUTH_SOCK;
+> SSH_AGENT_PID=9620; export SSH_AGENT_PID; echo Agent pid 9620;
+```
+
+ssh-agent it print a string/text that export `SSH_AUTH_SOCK` and `SSH_AGENT_PID`, the export command it write in the env variables to access the variables from anywhere.
+
+To run it as a string you can run this command:
+
+```bash
+$ eval `ssh-agent`
+# --- or ---
+$ eval $(ssh-agent)
+```
