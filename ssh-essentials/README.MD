@@ -109,3 +109,51 @@ X11Forwarding yes
 PasswordAuthentication no
 PermitEmptyPasswords no
 ```
+
+### What is the SSH agent?
+
+`ssh-agent` is a key manager for SSH. It holds your keys and certificates in memory, unencrypted, and ready for use by ssh. It saves you from typing a passphrase every time you connect to a server. It runs in the background on your system, separately from ssh, and it usually starts up the first time you run ssh after a reboot.
+
+> In Unix, `ssh-agent` is a background program that handles passwords for SSH private keys. The ssh-add command prompts the user for a private key password and adds it to the list maintained by ssh-agent. Once you add a password to ssh-agent, you will not be prompted for it when using SSH or `scp` to connect to hosts with your public key.
+
+To use ssh-agent and ssh-add, follow the steps below:
+
+1. At the terminal, enter:
+
+```bash
+$ eval $(ssh-agent)
+# --- you can verify with this command ---
+$ ps -aux | grep ssh-agent
+# output:
+user     3497  0.0  0.1   7976  5632 ?        S    10:02   0:00 /usr/bin/ssh-agent -D -a /run/user/1000/keyring/.ssh
+user     9014  0.0  0.0   7976  1908 ?        Ss   19:29   0:00 ssh-agent
+# --- or you can verify with this commands
+echo $SSH_AGENT_PID
+echo $SSH_AUTH_SOCK
+# output
+9014
+/tmp/ssh-Jln2ng5l98v4/agent.9014
+```
+
+2. Add your private key to the `ssh-agent`
+
+```bash
+$ ssh-add ~/.ssh/id_ed25519
+```
+
+3. Get a list of all the keys currently added to ssh-agent using:
+
+```bash
+$ ssh-add -l
+# output
+256 SHA256:<KEY_ID> example-user@localhost (ED25519)
+```
+
+4. Try to connect to your remote server without asking for `passphrase` in every time
+
+```bash
+$ ssh -i ~/.ssh/id_25519 user@host-ip-address
+```
+
+> [!IMPORTANT]  
+> The ssh agent allow you to to cache you private key, that way you need to type your `passphrase` once per your terminal session, if you exit your terminal and enter again you need to start the `ssh-agent` again and add your private key to the agent
