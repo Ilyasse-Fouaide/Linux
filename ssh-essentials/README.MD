@@ -190,3 +190,5 @@ $ eval `ssh-agent`
 # --- or ---
 $ eval $(ssh-agent)
 ```
+
+So, when you run eval $(ssh-agent), you're not just printing the output of ssh-agent to the terminal; you're actually setting up the SSH agent and its associated environment variables, making it ready for use within your shell session.
