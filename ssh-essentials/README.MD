@@ -5,21 +5,21 @@ SSH _(Secure Shell)_ is a secure protocol used as the primary means of connectin
 ## Table of content
 
 1. [Generating and Working with SSH Keys](#a)
-  * [Generating an SSH Key Pair](#b)
-  * [Copying your Public SSH Key to a Server with SSH-Copy-ID](#c)
-  * [Log In to Your Remote Server](#d)
-  * [Copying your Public SSH Key to a Server with SCP](#e)
+    * [Generating an SSH Key Pair](#b)
+    * [Copying your Public SSH Key to a Server with SSH-Copy-ID](#c)
+    * [Log In to Your Remote Server](#d)
+    * [Copying your Public SSH Key to a Server with SCP](#e)
 2. [Server-Side Configuration Options](#f)
-  * [Disabling Password Authentication](#g)
-  * [What is the SSH agent?](#h)
-  * [At the terminal, enter:](#i)
-  * [Add your private key to the ssh-agent](#j)
-  * [Get a list of all the keys currently added to ssh-agent using:](#k)
-  * [Try to connect to your remote server without asking for passphrase in every time](#l)
+    * [Disabling Password Authentication](#g)
+    * [What is the SSH agent?](#h)
+    * [At the terminal, enter:](#i)
+    * [Add your private key to the ssh-agent](#j)
+    * [Get a list of all the keys currently added to ssh-agent using:](#k)
+    * [Try to connect to your remote server without asking for passphrase in every time](#l)
 3. [Explain eval $(ssh-agent)](#m)
 4. [SSH agent forwarding](#n)
-  * [Local Machine (Your Computer):](#o)
-  * [Connect to the Web Server (AWS instance named web_server):](#s)
+    * [Local Machine (Your Computer):](#o)
+    * [Connect to the Web Server (AWS instance named web_server):](#s)
 
 ## Generating and Working with SSH Keys <a id="a"></a>
 
