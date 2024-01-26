@@ -110,6 +110,8 @@ PasswordAuthentication no
 PermitEmptyPasswords no
 ```
 
+---
+
 ### What is the SSH agent?
 
 `ssh-agent` is a key manager for SSH. It holds your keys and certificates in memory, unencrypted, and ready for use by ssh. It saves you from typing a passphrase every time you connect to a server. It runs in the background on your system, separately from ssh, and it usually starts up the first time you run ssh after a reboot.
@@ -128,8 +130,8 @@ $ ps -aux | grep ssh-agent
 > user     3497  0.0  0.1   7976  5632 ?        S    10:02   0:00 /usr/bin/ssh-agent -D -a /run/user/1000/keyring/.ssh
 > user     9014  0.0  0.0   7976  1908 ?        Ss   19:29   0:00 ssh-agent
 # --- or you can verify with this commands
-echo $SSH_AGENT_PID
-echo $SSH_AUTH_SOCK
+$ echo $SSH_AGENT_PID
+$ echo $SSH_AUTH_SOCK
 # output
 > 9014
 > /tmp/ssh-Jln2ng5l98v4/agent.9014
@@ -197,7 +199,8 @@ So, when you run eval $(ssh-agent), you're not just printing the output of ssh-a
 
 `SSH agent forwarding` is a mechanism that allows you to use your local SSH key on a remote machine, typically when connecting through an intermediate server. This can be useful in scenarios like, where you have multiple servers (`web_server` and `back_end` server) and you want to securely access the back-end server from the web_server.
 
-Imagine you have two instances in `AWS (EC2)`: one named `web_server` and the other named `back_end`. Your goal is to establish a secure connection to the back_end server from the web_server. Initially, you might think of generating key pairs for the back_end server and connecting to the web_server. However, a potential security concern arises. If an attacker manages to compromise your web_server, they could gain unauthorized access to the back_end server.
+> [!NOTE]  
+> Imagine you have two instances in `AWS (EC2)`: one named `web_server` and the other named `back_end`. Your goal is to establish a secure connection to the back_end server from the web_server. Initially, you might think of generating key pairs for the back_end server and connecting to the web_server. However, a potential security concern arises. If an attacker manages to compromise your web_server, they could gain unauthorized access to the back_end server.
 
 To address this security risk, a more secure approach is required.
 
@@ -236,6 +239,7 @@ Here's a step-by-step explanation:
 3. On the Web Server:
 
   * Check if the your private key is forwarded correctly:
+
     ```bash
     $ ssh-add -l
     # same output
@@ -243,9 +247,11 @@ Here's a step-by-step explanation:
     ```
 
   * Connect to the Back-End Server:
+
     ```bash
     $ ssh -A ec2-user@back-end-ip-addr
     ```
+
     * This step utilizes agent forwarding, allowing the web_server to use your local SSH agent. You don't need to copy the private key to the web_server, maintaining a more secure setup.
 
 By using SSH agent forwarding, your private key never leaves your local machine, and you can securely connect through intermediate servers. It's crucial to keep your systems and SSH keys secure, regularly update them, and follow best practices for securing your servers.
