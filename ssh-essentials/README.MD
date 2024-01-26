@@ -192,3 +192,60 @@ $ eval $(ssh-agent)
 ```
 
 So, when you run eval $(ssh-agent), you're not just printing the output of ssh-agent to the terminal; you're actually setting up the SSH agent and its associated environment variables, making it ready for use within your shell session.
+
+### SSH agent forwarding
+
+`SSH agent forwarding` is a mechanism that allows you to use your local SSH key on a remote machine, typically when connecting through an intermediate server. This can be useful in scenarios like, where you have multiple servers (`web_server` and `back_end` server) and you want to securely access the back-end server from the web_server.
+
+Imagine you have two instances in `AWS (EC2)`: one named `web_server` and the other named `back_end`. Your goal is to establish a secure connection to the back_end server from the web_server. Initially, you might think of generating key pairs for the back_end server and connecting to the web_server. However, a potential security concern arises. If an attacker manages to compromise your web_server, they could gain unauthorized access to the back_end server.
+
+To address this security risk, a more secure approach is required.
+
+Here's a step-by-step explanation:
+
+1. Local Machine (Your Computer):
+
+  * Generate RSA key pairs for web_server and back-end server:
+
+    ```bash
+    $ ssh-keygen -t rsa -b 4096
+    ```
+
+  * Copy the public key to the web_server and the back_end server:
+    ```bash
+    $ ssh-copy-id -i ~/.ssh/id_rsa.pub ec2-user@web-server-ip-addr
+    $ ssh-copy-id -i ~/.ssh/id_rsa.pub ec2-user@back-end-ip-addr
+    ```
+
+  * Add the RSA private key to the SSH agent:
+    ```bash
+    $ eval $(ssh-agent)
+    $ ssh-add ~/.ssh/id_rsa
+      # Verify the key is added
+    $ ssh-add -l
+    # output:
+    > 256 SHA256:<KEY_ID> example-user@localhost (ED25519)
+    ```
+
+2. Connect to the Web Server (AWS instance named web_server):
+
+  ```bash
+  $ ssh -A ec2-user@web-server-ip-addr
+  ```
+
+3. On the Web Server:
+
+  * Check if the your private key is forwarded correctly:
+    ```bash
+    $ ssh-add -l
+    # same output
+    > 256 SHA256:<KEY_ID> example-user@localhost (ED25519)
+    ```
+
+  * Connect to the Back-End Server:
+    ```bash
+    $ ssh -A ec2-user@back-end-ip-addr
+    ```
+    * This step utilizes agent forwarding, allowing the web_server to use your local SSH agent. You don't need to copy the private key to the web_server, maintaining a more secure setup.
+
+By using SSH agent forwarding, your private key never leaves your local machine, and you can securely connect through intermediate servers. It's crucial to keep your systems and SSH keys secure, regularly update them, and follow best practices for securing your servers.
