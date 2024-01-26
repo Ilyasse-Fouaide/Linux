@@ -225,52 +225,52 @@ To address this security risk, a more secure approach is required.
 
 Here's a step-by-step explanation:
 
-1. Local Machine (Your Computer): <a id="o"></a>
+  1. Local Machine (Your Computer): <a id="o"></a>
 
-  * Generate RSA key pairs for web_server and back-end server: <a id="p"></a>
+      * Generate RSA key pairs for web_server and back-end server: <a id="p"></a>
 
-    ```bash
-    $ ssh-keygen -t rsa -b 4096
-    ```
+          ```bash
+          $ ssh-keygen -t rsa -b 4096
+          ```
 
-  * Copy the public key to the web_server and the back_end server: <a id="q"></a>
-    ```bash
-    $ ssh-copy-id -i ~/.ssh/id_rsa.pub ec2-user@web-server-ip-addr
-    $ ssh-copy-id -i ~/.ssh/id_rsa.pub ec2-user@back-end-ip-addr
-    ```
+      * Copy the public key to the web_server and the back_end server: <a id="q"></a>
+          ```bash
+          $ ssh-copy-id -i ~/.ssh/id_rsa.pub ec2-user@web-server-ip-addr
+          $ ssh-copy-id -i ~/.ssh/id_rsa.pub ec2-user@back-end-ip-addr
+          ```
 
-  * Add the RSA private key to the SSH agent: <a id="r"></a>
-    ```bash
-    $ eval $(ssh-agent)
-    $ ssh-add ~/.ssh/id_rsa
-      # Verify the key is added
-    $ ssh-add -l
-    # output:
-    > 256 SHA256:<KEY_ID> example-user@localhost (ED25519)
-    ```
+      * Add the RSA private key to the SSH agent: <a id="r"></a>
+          ```bash
+          $ eval $(ssh-agent)
+          $ ssh-add ~/.ssh/id_rsa
+            # Verify the key is added
+          $ ssh-add -l
+          # output:
+          > 256 SHA256:<KEY_ID> example-user@localhost (ED25519)
+          ```
 
-2. Connect to the Web Server (AWS instance named web_server): <a id="s"></a>
+  2. Connect to the Web Server (AWS instance named web_server): <a id="s"></a>
 
-  ```bash
-  $ ssh -A ec2-user@web-server-ip-addr
-  ```
+      ```bash
+      $ ssh -A ec2-user@web-server-ip-addr
+      ```
 
-3. On the Web Server: <a id="t"></a>
+  3. On the Web Server: <a id="t"></a>
 
-  * Check if the your private key is forwarded correctly: <a id="u"></a>
+      * Check if the your private key is forwarded correctly: <a id="u"></a>
 
-    ```bash
-    $ ssh-add -l
-    # same output
-    > 256 SHA256:<KEY_ID> example-user@localhost (ED25519)
-    ```
+          ```bash
+          $ ssh-add -l
+          # same output
+          > 256 SHA256:<KEY_ID> example-user@localhost (ED25519)
+          ```
 
-  * Connect to the Back-End Server: <a id="v"></a>
+      * Connect to the Back-End Server: <a id="v"></a>
 
-    ```bash
-    $ ssh -A ec2-user@back-end-ip-addr
-    ```
+          ```bash
+          $ ssh -A ec2-user@back-end-ip-addr
+          ```
 
-    * This step utilizes agent forwarding, allowing the web_server to use your local SSH agent. You don't need to copy the private key to the web_server, maintaining a more secure setup.
+          * This step utilizes agent forwarding, allowing the web_server to use your local SSH agent. You don't need to copy the private key to the web_server, maintaining a more secure setup.
 
 By using SSH agent forwarding, your private key never leaves your local machine, and you can securely connect through intermediate servers. It's crucial to keep your systems and SSH keys secure, regularly update them, and follow best practices for securing your servers.
