@@ -2,11 +2,30 @@
 
 SSH _(Secure Shell)_ is a secure protocol used as the primary means of connecting to Linux servers remotely.
 
-## Generating and Working with SSH Keys
+## Table of content
+
+1. [Generating and Working with SSH Keys](#a)
+  * [Generating an SSH Key Pair](#b)
+  * [Copying your Public SSH Key to a Server with SSH-Copy-ID](#c)
+  * [Log In to Your Remote Server](#d)
+  * [Copying your Public SSH Key to a Server with SCP](#e)
+2. [Server-Side Configuration Options](#f)
+  * [Disabling Password Authentication](#g)
+  * [What is the SSH agent?](#h)
+  * [At the terminal, enter:](#i)
+  * [Add your private key to the ssh-agent](#j)
+  * [Get a list of all the keys currently added to ssh-agent using:](#k)
+  * [Try to connect to your remote server without asking for passphrase in every time](#l)
+3. [Explain eval $(ssh-agent)](#m)
+4. [SSH agent forwarding](#n)
+  * [Local Machine (Your Computer):](#o)
+  * [Connect to the Web Server (AWS instance named web_server):](#s)
+
+## Generating and Working with SSH Keys <a id="a"></a>
 
 This section will cover how to generate SSH keys on a client machine and distribute the public key to servers where they should be used.
 
-### Generating an SSH Key Pair
+### Generating an SSH Key Pair <a id="b"></a>
 
 Generating a new SSH public and private key pair on your local computer is the first step towards authenticating with a remote server without a password
 
@@ -26,7 +45,7 @@ This procedure has generated an RSA and ED25519 SSH key pair, located in the .ss
 * ~/.ssh/id_rsa: The private key. DO NOT SHARE THIS FILE!
 * ~/.ssh/id_rsa.pub: The associated public key. This can be shared freely without consequence.
 
-### Copying your Public SSH Key to a Server with SSH-Copy-ID
+### Copying your Public SSH Key to a Server with SSH-Copy-ID <a id="c"></a>
 
 To copy your public key to a server, allowing you to authenticate without a password.
 
@@ -39,7 +58,7 @@ $ ssh-copy-id -i ~/.ssh/id_25519.pub user@host-ip-address
 $ ssh-copy-id -i ~/.ssh/id_rsa.pub user@host-ip-address
 ```
 
-### Log In to Your Remote Server
+### Log In to Your Remote Server <a id="d"></a>
 
 ```bash
 $ ssh -i ~/.ssh/id_rsa user@host-ip-address
@@ -68,7 +87,7 @@ Host any_name
 $ ssh any_name
 ```
 
-### Copying your Public SSH Key to a Server with SCP
+### Copying your Public SSH Key to a Server with SCP <a id="e"></a>
 
 ```bash
 $ scp /path/to/your/pub_key_file user@host-ip-addr:/home/user/.ssh/authorized_keys
@@ -83,9 +102,9 @@ The ssh-copy-id command is an excellent tool to copy ssh public to the remote se
 This will connect to the remote host, authenticate with your credentials, and execute the command you specified. The connection will immediately close afterwards.
 
 
-### Server-Side Configuration Options
+### Server-Side Configuration Options <a id="f"></a>
 
-#### Disabling Password Authentication
+#### Disabling Password Authentication <a id="g"></a>
 
 If you have SSH keys configured, tested, and working properly, it is probably a good idea to disable password authentication. This will prevent any user from signing in with SSH using a password.
 
@@ -112,7 +131,7 @@ PermitEmptyPasswords no
 
 ---
 
-### What is the SSH agent?
+### What is the SSH agent? <a id="h"></a>
 
 `ssh-agent` is a key manager for SSH. It holds your keys and certificates in memory, unencrypted, and ready for use by ssh. It saves you from typing a passphrase every time you connect to a server. It runs in the background on your system, separately from ssh, and it usually starts up the first time you run ssh after a reboot.
 
@@ -120,7 +139,7 @@ PermitEmptyPasswords no
 
 To use ssh-agent and ssh-add, follow the steps below:
 
-1. At the terminal, enter:
+1. At the terminal, enter: <a id="i"></a>
 
 ```bash
 $ eval $(ssh-agent)
@@ -137,13 +156,13 @@ $ echo $SSH_AUTH_SOCK
 > /tmp/ssh-Jln2ng5l98v4/agent.9014
 ```
 
-2. Add your private key to the `ssh-agent`
+2. Add your private key to the `ssh-agent` <a id="j"></a>
 
 ```bash
 $ ssh-add ~/.ssh/id_ed25519
 ```
 
-3. Get a list of all the keys currently added to ssh-agent using:
+3. Get a list of all the keys currently added to ssh-agent using: <a id="k"></a>
 
 ```bash
 $ ssh-add -l
@@ -151,7 +170,7 @@ $ ssh-add -l
 > 256 SHA256:<KEY_ID> example-user@localhost (ED25519)
 ```
 
-4. Try to connect to your remote server without asking for `passphrase` in every time
+4. Try to connect to your remote server without asking for `passphrase` in every time <a id="l"></a>
 
 ```bash
 $ ssh -i ~/.ssh/id_25519 user@host-ip-address
@@ -160,7 +179,7 @@ $ ssh -i ~/.ssh/id_25519 user@host-ip-address
 > [!IMPORTANT]  
 > The ssh agent allow you to to cache you private key, that way you need to type your `passphrase` once per your terminal session, if you exit your terminal and enter again you need to start the `ssh-agent` again and add your private key to the agent
 
-### Explain `eval $(ssh-agent)`
+### Explain `eval $(ssh-agent)` <a id="m"></a>
 
 `eval` is for evaluating and executing expressions as commands.
 
@@ -195,7 +214,7 @@ $ eval $(ssh-agent)
 
 So, when you run eval $(ssh-agent), you're not just printing the output of ssh-agent to the terminal; you're actually setting up the SSH agent and its associated environment variables, making it ready for use within your shell session.
 
-### SSH agent forwarding
+### SSH agent forwarding <a id="n"></a>
 
 `SSH agent forwarding` is a mechanism that allows you to use your local SSH key on a remote machine, typically when connecting through an intermediate server. This can be useful in scenarios like, where you have multiple servers (`web_server` and `back_end` server) and you want to securely access the back-end server from the web_server.
 
@@ -206,21 +225,21 @@ To address this security risk, a more secure approach is required.
 
 Here's a step-by-step explanation:
 
-1. Local Machine (Your Computer):
+1. Local Machine (Your Computer): <a id="o"></a>
 
-  * Generate RSA key pairs for web_server and back-end server:
+  * Generate RSA key pairs for web_server and back-end server: <a id="p"></a>
 
     ```bash
     $ ssh-keygen -t rsa -b 4096
     ```
 
-  * Copy the public key to the web_server and the back_end server:
+  * Copy the public key to the web_server and the back_end server: <a id="q"></a>
     ```bash
     $ ssh-copy-id -i ~/.ssh/id_rsa.pub ec2-user@web-server-ip-addr
     $ ssh-copy-id -i ~/.ssh/id_rsa.pub ec2-user@back-end-ip-addr
     ```
 
-  * Add the RSA private key to the SSH agent:
+  * Add the RSA private key to the SSH agent: <a id="r"></a>
     ```bash
     $ eval $(ssh-agent)
     $ ssh-add ~/.ssh/id_rsa
@@ -230,15 +249,15 @@ Here's a step-by-step explanation:
     > 256 SHA256:<KEY_ID> example-user@localhost (ED25519)
     ```
 
-2. Connect to the Web Server (AWS instance named web_server):
+2. Connect to the Web Server (AWS instance named web_server): <a id="s"></a>
 
   ```bash
   $ ssh -A ec2-user@web-server-ip-addr
   ```
 
-3. On the Web Server:
+3. On the Web Server: <a id="t"></a>
 
-  * Check if the your private key is forwarded correctly:
+  * Check if the your private key is forwarded correctly: <a id="u"></a>
 
     ```bash
     $ ssh-add -l
@@ -246,7 +265,7 @@ Here's a step-by-step explanation:
     > 256 SHA256:<KEY_ID> example-user@localhost (ED25519)
     ```
 
-  * Connect to the Back-End Server:
+  * Connect to the Back-End Server: <a id="v"></a>
 
     ```bash
     $ ssh -A ec2-user@back-end-ip-addr
