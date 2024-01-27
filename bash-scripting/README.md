@@ -16,6 +16,7 @@ PATH=$PATH:/home/user/.my-scripts/bin
 export PATH
 ```
 
+
 Once we append this directory to the PATH variable, all the scripts and executables from this directory will be available for use from the command line.
 
 > To avoid doing this on every reboot and make this addition permanent, we can run the above two commands automatically when the shell is initialized.
