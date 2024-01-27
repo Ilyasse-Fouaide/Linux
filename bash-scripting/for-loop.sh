@@ -28,8 +28,8 @@ done
 
 echo "--------------------";
 
-# fetch the log directory
-for file in log/*; do
+# fetch the log/ directory
+for file in log/*.log; do
     # if the content of log/ directory is not exutable
     if [ ! -x $file ]; then
         # add the execute mod for the user
