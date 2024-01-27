@@ -11,9 +11,18 @@ For scripts intended for personal use, we’d be better off putting them in a di
 For example, let’s include `~/my-scripts/bin`, in the PATH variable.
 
 ```bash
-$ chmod +x /home/user/.my-scripts/bin/your-script
-$ PATH=$PATH:/home/user/.my-scripts/bin
-$ export PATH
+chmod +x /home/user/.my-scripts/bin/your-script
+PATH=$PATH:/home/user/.my-scripts/bin
+export PATH
 ```
 
 Once we append this directory to the PATH variable, all the scripts and executables from this directory will be available for use from the command line.
+
+> To avoid doing this on every reboot and make this addition permanent, we can run the above two commands automatically when the shell is initialized.
+
+```bash
+nano ~/.bashrc
+### Add this two line ###
+PATH=$PATH:/home/user/.my-scripts/bin
+export PATH
+```
