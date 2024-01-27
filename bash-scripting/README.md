@@ -11,7 +11,9 @@ For scripts intended for personal use, we’d be better off putting them in a di
 For example, let’s include `~/.my-scripts/bin`, in the PATH variable.
 
 ```bash
+# make the script executable
 chmod +x /home/user/.my-scripts/bin/your-script
+
 PATH=$PATH:/home/user/.my-scripts/bin
 export PATH
 ```
