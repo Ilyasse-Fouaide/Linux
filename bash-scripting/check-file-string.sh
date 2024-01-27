@@ -1,6 +1,9 @@
 #!/bin/bash
 
-if grep -qsi "ubuntu" /etc/os-release; then
+osInfo=/etc/os-release;
+
+# it will work if the osInfo file match ubuntu or debian
+if grep -qsi "ubuntu" $osInfo || grep -qsi "debian" $osInfo; then
     echo "You have Ubuntu.";
 fi
 
