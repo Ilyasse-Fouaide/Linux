@@ -13,8 +13,9 @@ For example, let’s include `~/.my-scripts/bin`, in the PATH variable.
 ```bash
 # make the script executable
 chmod +x /home/user/.my-scripts/bin/your-script
-# re-create new PATH variable 
+# re-create new PATH variable
 PATH=$PATH:/home/user/.my-scripts/bin
+# export the PATH
 export PATH
 ```
 
