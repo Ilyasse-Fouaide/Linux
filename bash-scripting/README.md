@@ -8,7 +8,7 @@ For scripts intended for personal use, we’d be better off putting them in a di
 
 > [!NOTE]  
 > You can also make you own custom directory, add it to PATH variable, and then use the scripts under this directory from the command line.  
-For example, let’s include `~/my-scripts/bin`, in the PATH variable.
+For example, let’s include `~/.my-scripts/bin`, in the PATH variable.
 
 ```bash
 chmod +x /home/user/.my-scripts/bin/your-script
@@ -25,10 +25,10 @@ Once we append this directory to the PATH variable, all the scripts and executab
     ```bash
     nano ~/.bashrc
     ### Add this two lines ###
-    +++++++++++++++ [~/.bashrc] ++++++++++++++
+    +------------- [~/.bashrc] --------------+
     | PATH=$PATH:/home/user/.my-scripts/bin  |
     | export PATH                            |
-    ++++++++++++++++++++++++++++++++++++++++++
+    +----------------------------------------+
     ```
 
     `~/.bashrc`: This file is typically used for configuring the behavior of interactive shells. It's specific to Bash, and changes made here will affect only the user who owns the .bashrc file.
@@ -38,10 +38,10 @@ Once we append this directory to the PATH variable, all the scripts and executab
     ```bash
     sudo nano /etc/profile
     ### Add this two lines ###
-    ++++++++++++++ [etc/profile] +++++++++++++
+    +------------ [etc/profile] -------------+
     | PATH=$PATH:/home/user/.my-scripts/bin  |
     | export PATH                            |
-    ++++++++++++++++++++++++++++++++++++++++++
+    +----------------------------------------+
     ```
 
     This is suitable if you want the changes to be system-wide, applying to all users.
