@@ -23,8 +23,8 @@ Once we append this directory to the PATH variable, all the scripts and executab
 ```bash
 nano ~/.bashrc
 ### Add this two lines ###
-|----------------------------------------|
+|+++++++++++++++ ~/.bashrc ++++++++++++++|
 | PATH=$PATH:/home/user/.my-scripts/bin  |
 | export PATH                            |
-|----------------------------------------|
+|++++++++++++++++++++++++++++++++++++++++|
 ```
