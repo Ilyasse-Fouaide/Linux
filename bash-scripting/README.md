@@ -1,6 +1,11 @@
 # Bash Scripting
 
-### Where I store my scripts ?
+## table of content
+
+* [Where I store my scripts ](#a)
+* [Standard Streams](#b)
+
+### Where I store my scripts ? <a id="a"></a>
 
 On most systems, some standard directories such as `/usr/local/bin`. Adding our script to any of these directories enables us to run the script from the command line. All users can use it from the command line
 
@@ -50,3 +55,35 @@ Once we append this directory to the PATH variable, all the scripts and executab
     This is suitable if you want the changes to be system-wide, applying to all users.
 
 Choose the location based on your specific requirements. For individual user configurations, `~/.bashrc` or `~/.profile` is often preferred. If you want a system-wide configuration, you might consider modifying `/etc/profile`.
+
+### Standard Streams <a id="b"></a>
+
+Three different types of streams exist called standard streams which are:
+
+* The **standard input** `stdin`, that programs can read data from.
+* The **standard output** `stdout`, that programs can write data to when a successful operation was performed.
+* The **standard error** `stderr`, that programs can write data to when something goes wrong during execution.
+
+That being said, whenever you launch a new terminal window, the operating system automatically opens for us to use the three standard streams stdin, stdout and stderr, always assigning them the same three file descriptors, which are:
+
+* `0` for `stdin`
+* `1` for `stdout`
+* `2` for `stderr`
+
+    1. Redirection Operators of Stdin, Stdout, and Stderr
+
+        * The **<** or **0<** is used for the `stdin` stream.
+        * The **>** or **1>** is used for the `stdout` stream.
+        * The **2** is used for the `stderr` stream.
+
+    2. Uses of Stdin, Stdout, and Stderr
+
+        The uses of stdin, stdout, and stderr are shown in this part of the tutorial using multiple examples.
+
+        * Use of `Stdout`
+
+            ```bash
+            cat < file.txt
+            cat 0< file.txt
+            cat file.txt
+            ```
