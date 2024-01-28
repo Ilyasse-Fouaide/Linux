@@ -1,5 +1,10 @@
 #!/bin/bash
 
+echo "Enter your name: "
+read name
+
+echo "your name: $name"
+
 if [ ! -d ~/Documents/Linux/log/data-stream ]; then
     echo -e "--- creating log dir for you ... ---"
     mkdir ~/Documents/Linux/log/data-stream
