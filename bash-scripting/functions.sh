@@ -6,7 +6,7 @@ check_git_status() {
     if [ -n "$git_status" ]; then
         echo "*"
     else
-        echo "";
+        echo "up to date";
     fi
 }
 
