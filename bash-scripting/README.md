@@ -82,13 +82,14 @@ That being said, whenever you launch a new terminal window, the operating system
 
         ```bash
         find /etc/ > log/success.log
-        # it gonna output just the errors because the success output in log/success.log
+        # it gonna output just the `stderr` because the `stdout` output in log/success.log
         ```
 
         Redirect the error log into **log/error.log**
 
         ```bash
         find /etc/ 2> log/error.log
+        # it gonna output just the `stdout` because the `stderr` in log/error.log
         ```
 
         Redirect the error messages that come from `find /etc/` into **log/error.log** and redirect the success messages into **log/success.log**
