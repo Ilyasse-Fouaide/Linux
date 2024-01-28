@@ -23,7 +23,7 @@ Once we append this directory to the PATH variable, all the scripts and executab
 
 > To avoid doing this on every reboot and make this addition permanent, we can run the above two commands automatically when the shell is initialized.
 
-1. Apply only to your user account
+1. Apply `your/custom/directory/script` only to your user account
 
     ```bash
     nano ~/.bashrc
@@ -36,7 +36,7 @@ Once we append this directory to the PATH variable, all the scripts and executab
 
     `~/.bashrc`: This file is typically used for configuring the behavior of interactive shells. It's specific to Bash, and changes made here will affect only the user who owns the .bashrc file.
 
-2. Applying to all users.
+2. Applying `your/custom/directory/script` to all users account.
 
     ```bash
     sudo nano /etc/profile
