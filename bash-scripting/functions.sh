@@ -4,9 +4,9 @@ git_status="$(git status -s)"
 
 check_git_status() {
     if [ -n "$git_status" ]; then
-        echo "save the file"
+        echo "*"
     else
-        echo "you are up to date";
+        echo "";
     fi
 }
 
