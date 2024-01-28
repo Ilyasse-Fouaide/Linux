@@ -4,7 +4,7 @@
 
 On most systems, some standard directories such as `/usr/local/bin`. Adding our script to any of these directories enables us to run the script from the command line. All users can use it from the command line
 
-For scripts intended for personal use, we’d be better off putting them in a directory under our home directory, `~/.local/bin`
+For scripts intended for personal use, we’d be better off putting them in a directory under our home directory, `~/.local/bin`.
 
 > [!NOTE]  
 > You can also make you own custom directory, add it to PATH variable, and then use the scripts under this directory from the command line.  
