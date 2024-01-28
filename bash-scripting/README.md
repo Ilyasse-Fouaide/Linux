@@ -76,14 +76,29 @@ That being said, whenever you launch a new terminal window, the operating system
         * The **>** or **1>** is used for the `stdout` stream.
         * The **2** is used for the `stderr` stream.
 
-    2. Uses of Stdin, Stdout, and Stderr
+    2. Use Stdout and Stderr
 
-        The uses of stdin, stdout, and stderr are shown in this part of the tutorial using multiple examples.
+        Redirect the success logs into **log/success.log**
 
-        * Use of `Stdout`
+        ```bash
+        find /etc/ > log/success.log
+        # it gonna output just the errors because the success output in log/success.log
+        ```
 
-            ```bash
-            cat < file.txt
-            cat 0< file.txt
-            cat file.txt
-            ```
+        Redirect the error log into **log/error.log**
+
+        ```bash
+        find /etc/ 2> log/error.log
+        ```
+
+        Redirect the error messages that come from `find /etc/` into **log/error.log** and redirect the success messages into **log/success.log**
+
+        ```bash
+        find /etc/ 2> log/error.log > log/success.log
+        ```
+
+        Also we can redirect the `stdout` and `stderr` in the same file
+
+        ```bash
+        find /etc/ &> log/find-command.log
+        ```
