@@ -1,6 +1,6 @@
-#!/#!/usr/bin/env bash
+#!/usr/bin/env bash
 
-echo "At $(date)" >> log/job.log
+/usr/bin/echo "At $(date)" >> log/job.log
 
 # --- to schedul this script: ---
 # ./scheduling-jobs | at 10:50 AM
