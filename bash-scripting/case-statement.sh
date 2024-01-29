@@ -1,40 +1,49 @@
 #!/usr/bin/env bash
 
-echo "1-Arch"
-echo "2-CentOs"
-echo "3-Debian"
-echo "4-Red-hat"
-echo "5-Kali"
-echo "6-Something else ..."
+while true; do
 
-read -p "choose your distro: " distro
+    echo -e "\n--- 1-Arch ---"
+    echo "--- 2-CentOs ---"
+    echo "--- 3-Debian ---"
+    echo "--- 4-Red-hat ---"
+    echo "--- 5-Kali ---"
+    echo "--- 6-quit ---"
+    echo -e "--- 7-Something else ---\n"
 
-case $distro in
-    1)
-        echo "Arch is rolling release."
-    ;;
+    read -p "choose your distro: " distro
 
-    2)
-        echo "CentOs is a popular server"
-    ;;
+    case $distro in
+        1)
+            echo "Arch is rolling release."
+        ;;
 
-    3)
-        echo "Debian is a community distrobution"
-    ;;
+        2)
+            echo "CentOs is a popular server"
+        ;;
 
-    4)
-        echo "Read Hat is popular server"
-    ;;
+        3)
+            echo "Debian is a community distrobution"
+        ;;
 
-    5)
-        echo "Kali is a ... "
-    ;;
+        4)
+            echo "Read Hat is popular server"
+        ;;
 
-    6)
-        echo "Something else ..."
-    ;;
+        5)
+            echo "Kali is a ... "
+        ;;
 
-    *)
-        echo "Please choose number from 1 to 6"
-    ;;
-esac
+        6) break;;
+
+        7)
+            echo "Something else ..."
+        ;;
+
+        *)
+            echo "Please choose number from 1 to 6"
+        ;;
+    esac
+
+done
+
+echo "Quiting ..."
