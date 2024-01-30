@@ -4,6 +4,9 @@
 
 * [Where I store my scripts ](#a)
 * [Standard Streams](#b)
+* [scheduling Jobs](#c)
+    * [Using the `at` command for script scheduling]($d)
+    * [Automating tasks in Linux with `crontab`]($e)
 
 ### Where I store my scripts ? <a id="a"></a>
 
@@ -106,7 +109,7 @@ That being said, whenever you launch a new terminal window, the operating system
 
 ### scheduling Jobs <a id="c"></a>
 
-1. Using the ‘at’ command for script scheduling
+1. Using the ‘at’ command for script scheduling <a id="d"></a>
 
     In addition to cron, Linux also provides the `at` command for scheduling one-time tasks to be executed `at` a specific time.
 
@@ -118,21 +121,21 @@ That being said, whenever you launch a new terminal window, the operating system
 
     * Verify with `atq` (at queue)
 
-    ``` bash
-    atq
-    > 3	    Mon Jan 29 11:50:00 2024 a ilyasse
-    ```
+        ``` bash
+        atq
+        > 3	    Mon Jan 29 11:50:00 2024 a ilyasse
+        ```
 
     * Remove the jobs in queue with `atrm`
 
-    ```bash
-    # syntax
-    atrm <number_of_queue>
-    # e.g,
-    atrm 3
-    ```
+        ```bash
+        # syntax
+        atrm <number_of_queue>
+        # e.g,
+        atrm 3
+        ```
 
-2. Automating tasks in Linux with `crontab`
+2. Automating tasks in Linux with `crontab` <a id="e"></a>
 
     In Linux, cron is a time-based job scheduler that allows you to schedule tasks to run automatically at specific times or intervals. It is a useful tool that comes pre-installed on most Unix-like systems.
 
