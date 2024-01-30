@@ -131,3 +131,58 @@ That being said, whenever you launch a new terminal window, the operating system
     # e.g,
     atrm 3
     ```
+
+2. Automating tasks in Linux with `crontab`
+
+    In Linux, cron is a time-based job scheduler that allows you to schedule tasks to run automatically at specific times or intervals. It is a useful tool that comes pre-installed on most Unix-like systems.
+
+    ```bash
+    crontab -l
+    crontab -e
+    crontab -r
+    ```
+
+    * `-l`: Display the current user’s crontab.
+    * `-e`: Edit the current user’s crontab.
+    * `-r`: Remove the current user’s crontab.
+
+    Run the command to install new crontab job.
+
+    ```bash
+    cronab -e
+    # output: ---
+    > no crontab for ilaysse
+
+    > Select an editor.  To change later, run 'select-editor'.
+    >  1. /bin/nano        <---- easiest
+    >  2. /usr/bin/vim.basic
+    >  3. /usr/bin/vim.tiny
+    >  4. /bin/ed
+
+    > Choose 1-4 [1]: <choose_your_favorite_text_editor>
+    ```
+
+    <img src="../assets/cron-tab-file.png" width="600px" />
+
+    To execute backup.sh every day at 9:00 p.m. (21:00 hrs):
+
+    ```bash
+    0 21 * * * /path/to/your/script
+    ### -- every 21:00 it gonna concatinate
+    0 21 * * * /usr/bin/echo "at $(date) >> ~/log-file.log"
+    ```
+
+    ```bash
+    # Display the current user’s crontab.
+    crontab -l
+    # or list jobs with specific user ---
+    cronab -l -u ilyasse
+    cronab -l -u root
+    ```
+
+    On the other hand, crontab refers to the file or data structure that contains the list of cron jobs or tasks. The crontab file is typically located in the `/var/spool/cron` directory and is associated with a specific user.
+
+    ```bash
+    sudo ls -l /var/spool/cron/crontabs/
+    > -rw------- 1 ilyasse crontab 1137 Jan 30 11:55 ilyasse
+    ```
