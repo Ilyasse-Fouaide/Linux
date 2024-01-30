@@ -190,3 +190,7 @@ That being said, whenever you launch a new terminal window, the operating system
     > total 4
     > -rw------- 1 ilyasse crontab 1137 Jan 30 11:55 ilyasse
     ```
+
+### `TODO`:
+
+- [ ] rsync command
