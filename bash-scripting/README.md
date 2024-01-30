@@ -105,3 +105,29 @@ That being said, whenever you launch a new terminal window, the operating system
         ```
 
 ### scheduling Jobs <a id="c"></a>
+
+1. Using the ‘at’ command for script scheduling
+
+    In addition to cron, Linux also provides the `at` command for scheduling one-time tasks to be executed `at` a specific time.
+
+    To schedule a task using the at command, you can use the following syntax:
+
+    ```bash
+    at 11:50 AM -f /path/to/your/script.sh
+    ```
+
+    * Verify with `atq` (at queue)
+
+    ``` bash
+    atq
+    > 3	    Mon Jan 29 11:50:00 2024 a ilyasse
+    ```
+
+    * Remove the jobs in queue with `atrm`
+
+    ```bash
+    # syntax
+    atrm <number_of_queue>
+    # e.g,
+    atrm 3
+    ```
