@@ -5,8 +5,8 @@
 * [Where I store my scripts ](#a)
 * [Standard Streams](#b)
 * [scheduling Jobs](#c)
-    * [Using the `at` command for script scheduling]($d)
-    * [Automating tasks in Linux with `crontab`]($e)
+    * [Using the `at` command for script scheduling](#d)
+    * [Automating tasks in Linux with `crontab`](#e)
 
 ### Where I store my scripts ? <a id="a"></a>
 
@@ -183,9 +183,10 @@ That being said, whenever you launch a new terminal window, the operating system
     cronab -l -u root
     ```
 
-    On the other hand, crontab refers to the file or data structure that contains the list of cron jobs or tasks. The crontab file is typically located in the `/var/spool/cron` directory and is associated with a specific user.
+    On the other hand, crontab refers to the file or data structure that contains the list of cron jobs or tasks. The crontab file is typically located in the `/var/spool/cron/crontabs` directory and is associated with a specific user.
 
     ```bash
     sudo ls -l /var/spool/cron/crontabs/
+    > total 4
     > -rw------- 1 ilyasse crontab 1137 Jan 30 11:55 ilyasse
     ```
