@@ -103,3 +103,5 @@ That being said, whenever you launch a new terminal window, the operating system
         ```bash
         find /etc/ &> log/find-command.log
         ```
+
+### scheduling Jobs <a id="c"></a>
