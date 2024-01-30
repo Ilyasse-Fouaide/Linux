@@ -5,8 +5,8 @@
 * [Where I store my scripts ](#a)
 * [Standard Streams](#b)
 * [scheduling Jobs](#c)
-    * [Using the `at` command for script scheduling](#d)
-    * [Automating tasks in Linux with `crontab`](#e)
+    * [Using the 'at' command for script scheduling](#d)
+    * [Automating tasks in Linux with 'crontab'](#e)
 
 ### Where I store my scripts ? <a id="a"></a>
 
