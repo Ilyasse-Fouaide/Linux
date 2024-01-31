@@ -194,3 +194,4 @@ That being said, whenever you launch a new terminal window, the operating system
 ### `TODO`:
 
 - [ ] rsync command
+- [ ] backup script
