@@ -106,3 +106,39 @@ sudo userdel ilyasse
 ```
 
 * `-r` or `--remove` :Files in the user's home directory will be removed along with the home directory itself
+
+## Verifying
+
+1. `id` command
+
+    Print user and group IDs.
+
+    ```bash
+    id
+    > uid=1000(ilyasse) gid=1000(ilyasse) groups=1000(ilyasse),4(adm),24(cdrom),27(sudo),30(dip),33(www-data),46(plugdev),122(lpadmin),135(lxd),136(sambashare)
+    ```
+
+    print only the effective user ID
+
+    ```bash
+    id -u
+    > 1000
+    ```
+
+    print only the effective group ID
+
+    ```bash
+    id -g
+    > 1000
+    ```
+
+    print only the effective user ID for Specific User
+
+    ```bash
+    id -u root
+    id -u ilyasse
+    ```
+
+## TODO
+
+* `id` command
