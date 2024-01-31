@@ -138,7 +138,3 @@ sudo userdel ilyasse
     id -u root
     id -u ilyasse
     ```
-
-## TODO
-
-* `id` command
