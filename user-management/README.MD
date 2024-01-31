@@ -98,8 +98,11 @@ When we execute usermod command in terminal the command make the changes in thes
 ## How delete a user
 
 ```bash
+# remove with the home dir
 sudo userdel -r ilyasse
 sudo userdel --remove ilyasse
+# keep the home dir
+sudo userdel ilyasse
 ```
 
 * `-r` or `--remove` :Files in the user's home directory will be removed along with the home directory itself
