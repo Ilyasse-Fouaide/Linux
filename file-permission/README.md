@@ -1,4 +1,6 @@
-# How to Change Permissions using Absolute Mode
+# File Permissions
+
+## How to Change Permissions using Absolute Mode
 
 Absolute mode uses numbers to represent permissions and mathematical operators to modify them.
 
@@ -20,7 +22,7 @@ The sum of these values is used to set the permission. For example:
 
 The basic syntax of the `chmod` command with absolute mode is:
 
-```
+```bash
 chmod xyz file
 ```
 
@@ -30,12 +32,32 @@ chmod xyz file
 
 To give read, write, and execute permissions to the owner, and only read permissions to the group and others:
 
-```
+```bash
 chmod 744 filename
 ```
 
 To give read and write permissions to the owner, read-only permissions to the group, and no permissions to others:
 
-```
+```bash
 chmod 610 filename
+```
+## How to change user and group ownership
+
+We can also use `chown` to change user and group ownership
+
+Basic syntax:
+
+```bash
+# change file user ownership
+chown user filename
+# change file group ownership
+chown :group filename
+# change file user and group ownership
+chown user:group filename
+# change directory user ownership
+chown -R user directory/
+# change directory group ownership
+chown -R :group directory/
+# change directory user and group ownership
+chown -R user:group directory/
 ```
