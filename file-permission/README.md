@@ -36,11 +36,24 @@ To give read, write, and execute permissions to the owner, and only read permiss
 chmod 744 filename
 ```
 
+In this example:
+
+* The first digit `7` represents the permissions for the owner (Read + Write + Execute).
+* The second digit `4` represents the permissions for the group (Read).
+* The third digit `4` represents the permissions for others (Read).
+
 To give read and write permissions to the owner, read-only permissions to the group, and no permissions to others:
 
 ```bash
 chmod 610 filename
 ```
+
+In this example:
+
+* The first digit `6` represents the permissions for the owner (Read + Write).
+* The second digit `1` represents the permissions for the group (Execute).
+* The third digit `0` represents no permissions for others.
+
 ## How to change user and group ownership
 
 We can also use `chown` to change user and group ownership
