@@ -7,6 +7,7 @@
 * [scheduling Jobs](#c)
     * [Using the 'at' command for script scheduling](#d)
     * [Automating tasks in Linux with 'crontab'](#e)
+* [Comparison operations](#f)
 
 ### Where I store my scripts ? <a id="a"></a>
 
@@ -190,6 +191,32 @@ That being said, whenever you launch a new terminal window, the operating system
     > total 4
     > -rw------- 1 ilyasse crontab 1137 Jan 30 11:55 ilyasse
     ```
+
+### Comparison operations <a id="f"></a>
+
+| Operation             | Operator       |
+| --------------------- | -------------- |
+| Less than             | [[ $a < $b ]]  |
+| Greater than          | [[ $a > $b ]]  |
+| Less than or equal    | [[ $a <= $b ]] |
+| Greater than or equal | [[ $a >= $b ]] |
+| Equal                 | [[ $a == $b ]] |
+| Not Equal             | [[ $a != $b ]] |
+
+#### Examples:
+
+```bash
+#!/bin/bash
+
+[[ "cat" == "cat" ]]
+echo $?  # output: 0
+
+[[ "cat" == "car" ]]
+echo $?  # output: 1
+
+[[ 20 >= 20 ]]
+echo $?  # output: 0
+```
 
 ### `TODO`:
 
