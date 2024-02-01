@@ -32,3 +32,12 @@ fn2 () {
 
 fn2 "ilyasse"
 echo The previous function has a return value of $?
+
+echo "--------------------------"
+
+function current_branch {
+    git_current_branch=$(git branch --show-current 2> /dev/null)
+    echo "->[$git_current_branch]"
+}
+
+echo "ilyasse@ilyasse-ubuntu:~/Documents$(current_branch)"
