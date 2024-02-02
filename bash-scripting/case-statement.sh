@@ -13,27 +13,27 @@ while true; do
     read -p "choose your distro: " distro
 
     case $distro in
-        1)
+        1 | "a")
             echo "Arch is rolling release."
         ;;
 
-        2)
+        2 | "b")
             echo "CentOs is a popular server"
         ;;
 
-        3)
+        3 | "c")
             echo "Debian is a community distrobution"
         ;;
 
-        4)
+        4 | "d")
             echo "Read Hat is popular server"
         ;;
 
-        5)
+        5 | "d")
             echo "Kali is a ... "
         ;;
 
-        6) break;;
+        6 | "e" | "q") break;;
 
         7)
             echo "Something else ..."
