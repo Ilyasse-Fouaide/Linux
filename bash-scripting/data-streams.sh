@@ -15,6 +15,6 @@ errors_log=~/Documents/Linux/log/data-stream/errors.log
 
 git=/usr/bin/git
 
-if [ -f $git ]; then
+if [ -f "$git" ]; then
     git branch 2>> $errors_log 1>> $access_log
 fi
