@@ -6,8 +6,8 @@ Important group management commands for this lesson:
 * **_groupadd_**: create a new group.
 * **_groupdel_**: delete a group.
 * **_groupmod_**: modify a group definition on the system.
-* **_gpasswd_**: administer _/etc/group_ and _/etc/gshadow_ files.
- -  which store group information. It allows you to add or remove users from a group and set the password for a group
+* **_gpasswd_**: administer '_/etc/group_' and '_/etc/gshadow_' files.
+    -  which store group information. It allows you to add or remove users from a group and set the password for a group
 
 ## Print all the groups a user is in
 
