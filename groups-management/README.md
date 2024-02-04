@@ -23,7 +23,21 @@ sudo usermod -aG developer ilyasse
 ```
 > [!NOTE]  
 > To avoid reboot the system after adding group to yourself
-> > newgrp developer
+> ```bash
+> newgrp developer
+> ```
+
+remove user from a group
+
+```bash
+# syntax
+sudo gpasswd -d <user> <group>
+# e.g, remove ilyasse user from developer group
+sudo gpasswd -d ilyasse developer
+```
+
+* **-d**, **--delete** <u>user</u>   
+    * Remove the <u>user</u> from the named group.
 
 delete group
 
