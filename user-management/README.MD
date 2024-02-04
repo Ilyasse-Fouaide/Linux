@@ -52,12 +52,12 @@ sudo passwd ilyasse
 
 `usermod` command or modify user is a command in Linux that is used to change the properties of a user in Linux through the command line. After creating a user we have to sometimes change their attributes like password or login directory etc. so in order to do that we use the `usermod` command. The information of a user is stored in the following files:
 
-* /etc/passwd
-* /etc/group
-* /etc/shadow
-* /etc/login.defs
-* /etc/gshadow
-* /etc/login.defs
+* **/etc/passwd**: User account information.
+* **/etc/group**: Group account information.
+* **/etc/shadow**: Secure user account information
+* **/etc/gshadow**: Secure group account information.
+* **/etc/login.defs**: ...
+* **/etc/login.defs**: ...
 
 When we execute usermod command in terminal the command make the changes in these files itself.
 
