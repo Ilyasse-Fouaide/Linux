@@ -104,3 +104,8 @@ cat /etc/passwd | grep ilyasse
 >   |_ user        |
 >                  |_ Primary group ID
 ```
+
+### `Add a group to a group ?`
+
+> [!CAUTION]  
+> You can't have a group be a member of another group. Users only.
