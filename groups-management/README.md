@@ -1,5 +1,7 @@
 # Managing Groups
 
+## Print all the groups a user is in
+
 ```bash
 groups
 > ilyasse adm cdrom sudo dip www-data plugdev lpadmin lxd sambashare
