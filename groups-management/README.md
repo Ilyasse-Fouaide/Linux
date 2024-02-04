@@ -1,5 +1,13 @@
 # Managing Groups
 
+Important group management commands for this lesson:
+
+* **_groups_**: print the groups a user is in
+* **_groupadd_**: create a new group
+* **_groupdel_**: delete a group
+* **_groupmod_**: modify a group definition on the system
+* **_gpasswd_**: administer /etc/group and /etc/gshadow
+
 ## Print all the groups a user is in
 
 ```bash
@@ -58,6 +66,8 @@ Suppose you have existing users named _ilyasse_ and _trafy_, and you want to add
 ```bash
 sudo usermod -aG developer ilyasse
 sudo usermod --append --groups developer trafy
+# --- OR ---
+sudo gpasswd -a ilyasse developer
 ```
 > [!NOTE]  
 > To avoid reboot the system after adding group to yourself
