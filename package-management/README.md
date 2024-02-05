@@ -68,3 +68,48 @@ Additional options, commands, and notes:
     ```bash
     sudo apt reinstall [package]
     ```
+
+> [!NOTE]  
+> This command `apt` is equivalent to `apt-get`.
+
+## Upgrading Packages
+
+Before upgrading packages, it’s highly recommended to obtain updated package version and dependency information.
+
+```bash
+sudo apt update && sudo apt upgrade
+```
+
+Additional options, commands, and notes:
+
+* **To view a list of all available upgrades**, use the `list` command with the `--upgradable` option.
+
+    ```bash
+    apt list --upgradeable
+    ```
+
+* **To remove unneeded packages** (including kernels) use:
+
+    ```bash
+    sudo apt autoremove
+    ```
+
+## Uninstalling Packages
+
+Removes the specified package from the system, but ***retains*** any packages that were installed to satisfy dependencies as well as some configuration files. Replace [package] with the name of the package you’d like to remove.
+
+```bash
+sudo apt remove [package]
+```
+
+To remove the package as well as any configuration files, run the following command. This can also be used to just remove configuration files for previously removed packages.
+
+```bash
+sudo apt purge [package]
+```
+
+* **To remove any unused dependencies**, run `apt autoremove`
+
+    ```bash
+    sudo apt autoremove
+    ```
