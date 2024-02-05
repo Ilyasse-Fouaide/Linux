@@ -47,7 +47,7 @@ Installs the specified package and all required dependencies. Replace [package] 
 ```bash
 sudo apt install [package]
 # for multi Packages
-sudo apt install package1 package2 ...
+sudo apt install [package1] [package2] ...
 ```
 
 **Before installing packages**, it’s highly recommended to obtain updated package version and dependency information and upgrade packages and dependencies to those latest version.
@@ -112,4 +112,18 @@ sudo apt purge [package]
 
     ```bash
     sudo apt autoremove
+    ```
+
+## Listing Packages
+
+* **List all packages that are installed**
+
+    ```bash
+    sudo apt list --installed
+    ```
+
+* **List all packages that have an upgrade available**
+
+    ```bash
+    sudo apt list --upgradable
     ```
