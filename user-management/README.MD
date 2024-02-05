@@ -45,7 +45,7 @@ To be able to log in as the newly created user, you need to set the user passwor
 sudo passwd ilyasse
 > Changing password for user ilyasse.
 > New password: <password>
-> Retype new password: <password>
+> Retype new password: <retype_password>
 > passwd: all authentication tokens updated successfully.
 ```
 ## How to modify a user account
