@@ -96,13 +96,13 @@ sudo gpasswd --delete ilyasse developer
 sudo groupdel developer
 ```
 
-get groups file
+/ech/passwd file
 
 ```bash
 cat /etc/passwd | grep ilyasse
 # --- OR ---
 getent passwd
-> ilyasse:x:1000:1000:ILYASSE,,,:/home/ilyasse:/bin/bash
+> ilyasse:x:1000:1000:ILYASSE-UBUNTU:/home/ilyasse:/bin/bash
 >   |_ user        |
 >                  |_ Primary group ID
 ```
