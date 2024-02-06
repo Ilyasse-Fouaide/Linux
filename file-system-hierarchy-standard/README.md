@@ -1,4 +1,4 @@
-# Filesystem Hierarchy Standard
+# Filesystem Hierarchy Standard (FHS)
 
 ```
 /
@@ -40,3 +40,6 @@ The `/bin` contains commands that may be used by both the system administrator a
 This `/boot` directory contains everything required for the boot process, such as the Linux kernel
 
 > This `/boot` stores data that is used before the kernel begins executing user-mode programs.
+
+> [!CAUTION]  
+> Do not remove /boot directory, by doing that your system is unable to boot again
