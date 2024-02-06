@@ -37,9 +37,23 @@ The `/bin` contains commands that may be used by both the system administrator a
 
 ## /boot : Static files of the boot loader
 
-This `/boot` directory contains everything required for the boot process, such as the Linux kernel
-
-> This `/boot` stores data that is used before the kernel begins executing user-mode programs.
+This `/boot` directory contains everything required for the boot process, such as the Linux kernel, the `/boot` stores data that is used before the kernel begins executing user-mode programs.
 
 > [!CAUTION]  
 > Do not remove /boot directory, by doing that your system is unable to boot again
+
+## /dev : Device files
+
+The `/dev` directory is the location of special or device files. which  represent devices that are attached to the system
+
+## /etc : Host-specific system configuration
+
+The `/etc` directory is reserved for configuration files that are local to the machine. No binaries are to be placed in `/etc`. 
+
+## /lib : Essential shared libraries and kernel modules
+
+The `/lib` directory should contain only those libraries needed to execute the binaries in `/bin` and `/sbin`. These shared library images are particularly important for booting the system and executing commands within the root file system.
+
+## /media : Mount point for removeable media
+
+This directory contains subdirectories which are used as mount points for removeable media such as floppydisks, cdroms and zip disks.
