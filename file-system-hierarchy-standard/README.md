@@ -57,3 +57,10 @@ The `/lib` directory should contain only those libraries needed to execute the b
 ## /media : Mount point for removeable media
 
 This directory contains subdirectories which are used as mount points for removeable media such as floppydisks, cdroms and zip disks.
+
+## /mnt : Mount point for a temporarily mounted filesystem
+
+The `/mnt` directory is reserved for temporarily mounted file systems. For all removeable media, use the `/media` directory.
+
+> [!NOTE]  
+> This directory must not be used by installation programs.
