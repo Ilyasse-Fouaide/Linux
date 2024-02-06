@@ -30,7 +30,7 @@
 ```
 
 ## /bin : Essential user command binaries (for use by allusers)
-
+ 
 The `/bin` contains commands that may be used by both the system administrator and by users
 
 > There must be no subdirectories in /bin.
