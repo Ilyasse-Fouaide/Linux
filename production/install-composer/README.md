@@ -100,4 +100,4 @@ This verifies that Composer was successfully installed on your system and is ava
 
 ## Next step:
 
-- [x] Install laravel
+- [Install laravel](../install-laravel/README.md)
