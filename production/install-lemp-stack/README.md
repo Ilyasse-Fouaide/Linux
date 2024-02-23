@@ -1,6 +1,14 @@
 # How to install Linux, Nginx, Myqsl, PHP (LEMP stack) on Ubuntu
 
-## Step 1 – Installing the Nginx Web Server _(EnginX)_
+## Table of content:
+
+- [Installing the Nginx Web Server](#a)
+- [Installing MySQL](#b)
+- [Installing PHP](#c)
+- [Configuring Nginx to Use the PHP Processor](#d)
+- [Testing PHP with Nginx](#e)
+
+## Step 1 – Installing the Nginx Web Server _(EnginX)_ <a id="a"></a>
 
 You can use apt install to get Nginx installed:
 
@@ -15,7 +23,7 @@ It is recommended that you enable the most restrictive profile that will still a
 sudo ufw allow 80/tcp
 ```
 
-## Step 2 — Installing MySQL
+## Step 2 — Installing MySQL <a id="b"></a>
 
 Now that you have a web server up and running, you need to install the database system to be able to store and manage data for your site. MySQL is a popular database management system used within PHP environments.
 
@@ -29,7 +37,7 @@ When the installation is finished, it’s recommended that you run a **security*
 sudo mysql_secure_installation
 ```
 
-## Step 3 – Installing PHP
+## Step 3 – Installing PHP <a id="c"></a>
 
 You have Nginx installed to serve your content and MySQL installed to store and manage your data. Now you can install PHP to process code and generate dynamic content for the web server.
 
@@ -42,7 +50,7 @@ sudo apt install php-fpm php-mysql
 - `php-fpm`: which stands for “PHP fastCGI process manager”, and tell Nginx to pass PHP requests to this software for processing
 - `php-mysql`: a PHP module that allows PHP to communicate with MySQL-based databases
 
-## Step 4 — Configuring Nginx to Use the PHP Processor
+## Step 4 — Configuring Nginx to Use the PHP Processor <a id="d"></a>
 
 Create the root web directory for your_domain as follows:
 
@@ -129,7 +137,7 @@ nano /var/www/your_domain/index.html
 </html>
 ```
 
-## Step 5 –Testing PHP with Nginx
+## Step 5 –Testing PHP with Nginx <a id="e"></a>
 
 Your LEMP stack should now be completely set up. You can test it to validate that Nginx can correctly hand `.php` files off to your PHP processor.
 
@@ -146,3 +154,7 @@ You can now access this page in your web browser by visiting the domain name or 
 ```bash
 http://your_server_domain/info.php
 ```
+
+## Conclusion
+
+In this guide, we’ve built a flexible foundation for serving PHP websites and applications to your visitors, using Nginx as web server and MySQL as database system.
