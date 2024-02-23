@@ -87,3 +87,62 @@ server {
 
 }
 ```
+
+Activate your configuration by linking to the config file from Nginx’s `sites-enabled` directory:
+
+```bash
+sudo ln -s /etc/nginx/sites-available/your_domain /etc/nginx/sites-enabled/
+```
+
+Then, unlink the default configuration file from the `/sites-enabled/` directory:
+
+```bash
+sudo unlink /etc/nginx/sites-enabled/default
+```
+
+You can test your configuration for syntax errors by typing:
+
+```bash
+sudo nginx -t
+```
+
+When you are ready, reload Nginx to apply the changes:
+
+```bash
+sudo systemctl reload nginx
+```
+
+Your new website is now active, but the web root /var/www/your_domain is still empty. Create an index.html file in that location so that we can test that your new server block works as expected:
+
+```
+nano /var/www/your_domain/index.html
+
+<html>
+  <head>
+    <title>your_domain website</title>
+  </head>
+  <body>
+    <h1>Hello World!</h1>
+
+    <p>This is the landing page of <strong>your_domain</strong>.</p>
+  </body>
+</html>
+```
+
+## Step 5 –Testing PHP with Nginx
+
+Your LEMP stack should now be completely set up. You can test it to validate that Nginx can correctly hand `.php` files off to your PHP processor.
+
+Open a new file called info.php within your document root in your text editor:
+
+```bash
+nano /var/www/your_domain/info.php
+# type this: 
+<?php phpinfo(); ?>
+```
+
+You can now access this page in your web browser by visiting the domain name or public IP address you’ve set up in your Nginx configuration file, followed by `/info.php`:
+
+```bash
+http://your_server_domain/info.php
+```
