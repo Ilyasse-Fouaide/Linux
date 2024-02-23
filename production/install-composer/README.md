@@ -100,4 +100,4 @@ This verifies that Composer was successfully installed on your system and is ava
 
 ## Next step:
 
-- [] Install laravel
+- [x] Install laravel
