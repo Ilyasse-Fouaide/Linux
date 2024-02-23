@@ -42,7 +42,7 @@ You’ll see the following output:
 Installer verified
 ```
 
-> ![NOTE]  
+> [!NOTE]  
 > If the output says `Installer corrupt`, you’ll need to **repeat** the download and verification process until you have a verified installer.
 
 The following command will download and install Composer as a system-wide command named `composer`, under `/usr/local/bin:`
