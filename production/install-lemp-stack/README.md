@@ -155,6 +155,10 @@ You can now access this page in your web browser by visiting the domain name or 
 http://your_server_domain/info.php
 ```
 
+## Next step
+
+- [Install Composer](../install-composer/README.md)
+
 ## Conclusion
 
 In this guide, we’ve built a flexible foundation for serving PHP websites and applications to your visitors, using Nginx as web server and MySQL as database system.

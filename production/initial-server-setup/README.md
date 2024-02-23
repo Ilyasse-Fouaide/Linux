@@ -39,3 +39,7 @@ We need alse to allow the *HTTP/HTTPS* traffic.
 ufw allow 80/tcp
 ufw allow 443/tcp
 ```
+
+## Next step
+
+- [Install LEMP stack](../install-lemp-stack/README.md)
