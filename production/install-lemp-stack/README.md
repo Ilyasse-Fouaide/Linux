@@ -63,6 +63,7 @@ sudo nano /etc/nginx/sites-available/your_domain
 ```
 
 ```nginx
+# /etc/nginx/sites-available/your_domain
 server {
     listen 80;
     server_name your_domain www.your_domain;
@@ -76,6 +77,7 @@ server {
 
     location ~ \.php$ {
         include snippets/fastcgi-php.conf;
+        # replace you php version with php7.4-fpm.sock
         fastcgi_pass unix:/var/run/php/php7.4-fpm.sock;
      }
 
