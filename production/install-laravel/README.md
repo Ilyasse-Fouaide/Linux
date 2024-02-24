@@ -1,10 +1,14 @@
 # How to install laravel on Ubuntu
 
-Before you begin installing laravel make sure you have these PHP extensions.
+Before you begin installing laravel make sure you have `composer` and some `PHP extensions`.
+
+**Install Composer**:
+
+`composer` is package manager for **PHP** and is required by laravel. Follow the installation instruction here [install composer](../install-composer/README.md)
+
+**PHP Extesnsions for Laravel 10.x**:
 
 The specific PHP extensions you need to install for Laravel on Ubuntu server will depend on the version of Laravel you're using. Here's a breakdown:
-
-**Laravel 10.x**:
 
 - Minimum requirements
 
@@ -33,3 +37,21 @@ The specific PHP extensions you need to install for Laravel on Ubuntu server wil
     ```bash
     sudo apt install php-Y (replace Y with extension name)
     ```
+## Installing Laravel
+
+Use composer to create new laravel project in your desired directory:
+
+```bash
+composer create-project laravel/laravel example-app
+```
+
+replace `example.com` with your desired project name
+
+Once everyting is set up start development server by typing: 
+
+```bash
+cd example-app
+php artisan serve
+```
+
+Now you should be able to access your laravel application through the URL on port ***8000***
