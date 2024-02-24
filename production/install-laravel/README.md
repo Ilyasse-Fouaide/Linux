@@ -2,6 +2,10 @@
 
 Before you begin installing laravel make sure you have `composer` and some `PHP extensions`.
 
+## Prerequisites:
+
+In order to follow this guide, you will need first to follow [Setting up LEMP Stack](../install-lemp-stack/README.md) 
+
 **Install Composer**:
 
 `composer` is package manager for **PHP** and is required by laravel. Follow the installation instruction here [install composer](../install-composer/README.md)

@@ -4,6 +4,7 @@
 
 In this quickstart guide, we’ll install **Composer** on an Ubuntu 22.04 server.
 
+
 ## Step 1 — Install Dependencies
 
 Start by updating your package manager cache and installing the required dependencies, including `php-cli`:
