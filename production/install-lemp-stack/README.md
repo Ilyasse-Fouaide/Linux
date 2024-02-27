@@ -23,12 +23,13 @@ It is recommended that you enable the most restrictive profile that will still a
 sudo ufw allow 80/tcp
 ```
 
-## Step 2 — Installing MySQL <a id="b"></a>
+## Step 2 — Installing MySQL/MariaDB <a id="b"></a>
 
 Now that you have a web server up and running, you need to install the database system to be able to store and manage data for your site. MySQL is a popular database management system used within PHP environments.
 
 ```bash
 sudo apt install mysql-server
+sudo apt install mariadb-server
 ```
 
 When the installation is finished, it’s recommended that you run a **security** script that comes pre-installed with MySQL. This script will remove some insecure default settings and lock down access to your database system. Start the interactive script by running:
