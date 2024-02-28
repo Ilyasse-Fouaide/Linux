@@ -32,6 +32,14 @@ sudo apt install mysql-server
 sudo apt install mariadb-server
 ```
 
+### Starting the Database Service
+
+When MariaDB or Mysql installed start the database service by typing:
+
+```bash
+sudo systemctl start mysql
+```
+
 When the installation is finished, it’s recommended that you run a **security** script that comes pre-installed with MySQL. This script will remove some insecure default settings and lock down access to your database system. Start the interactive script by running:
 
 ```bash
