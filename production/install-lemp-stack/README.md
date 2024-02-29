@@ -131,30 +131,39 @@ server {
 
     server_name ilyasse-fouaide.com;
 
-    index index.php info.php info.php;
+    index index.php info.php;
 
     location /sites-1 {
-        try_files $uri $uri/ /sites-1/index.html =404;
+        # Re-write the root path with alias
+        root /var/www/ilyasse-fouaide.com/sites-1;
+        try_files $uri $uri/ /index.html =404;
     }
 
     location /sites-2 {
-        try_files $uri $uri/ /sites-2/index.html =404;
+        root /var/www/ilyasse-fouaide.com/sites-2;
+        try_files $uri $uri/ /index.html =404;
     }
 
     location /php {
-        try_files $uri $uri/ /php/info.php =404;
+        try_files $uri $uri/ /php =404;
     }
 
     # pass PHP scripts to FastCGI server
     location ~ \.php$ {
         include snippets/fastcgi-php.conf;
+        # With php-fpm (or other unix sockets):
         fastcgi_pass unix:/run/php/php8.1-fpm.sock;
+        # With php-cgi (or other tcp sockets):
+        # fastcgi_pass 127.0.0.1:9000;
     }
 
+    # deny access to .htaccess files, if Apache's document root
+    # concurs with nginx's one
     location ~ /\.ht {
         deny all;
     }
 }
+
 ```
 
 </details>
