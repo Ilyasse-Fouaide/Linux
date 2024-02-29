@@ -110,6 +110,18 @@ server {
 <details>
 <summary>My own configuration</summary>
 
+*Dir Structure*
+
+```
+/var/www/ilyasse-fouaide.com/
+├── php
+│   └── info.php
+├── sites-1
+│   └── index.html
+└── sites-2
+    └── index.html
+```
+
 ```
 server {
     listen 80;
