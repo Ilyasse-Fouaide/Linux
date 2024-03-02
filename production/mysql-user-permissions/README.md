@@ -30,7 +30,7 @@ Run this GRANT statement, replacing ilyasse with your own MySQL user’s name, t
 GRANT CREATE, ALTER, DROP, INSERT, UPDATE, DELETE, SELECT, REFERENCES, RELOAD on *.* TO 'ilyasse'@'localhost' WITH GRANT OPTION;
 ```
 
-> [!CAUGHT]  
+> [!CAUTION]  
 > Some users may want to grant their MySQL user the ALL PRIVILEGES privilege, which will provide them with broad superuser privileges akin to the root user’s privileges, like so:
 >
 > ```
