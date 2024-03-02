@@ -10,7 +10,7 @@ sudo mysql
 
 Once you have access to the MySQL prompt, you can create a new user with a `CREATE USER` statement. These follow this general syntax:
 
-```
+```mysql
 CREATE USER 'ilyasse'@'localhost' IDENTIFIED BY 'password';
 ```
 
@@ -26,14 +26,14 @@ GRANT [PRIVILEGE] ON [database].[table] TO 'username'@'host';
 
 Run this GRANT statement, replacing ilyasse with your own MySQL user’s name, to grant these privileges to your user:
 
-```
+```mysql
 GRANT CREATE, ALTER, DROP, INSERT, UPDATE, DELETE, SELECT, REFERENCES, RELOAD on *.* TO 'ilyasse'@'localhost' WITH GRANT OPTION;
 ```
 
 > [!CAUTION]  
 > Some users may want to grant their MySQL user the ALL PRIVILEGES privilege, which will provide them with broad superuser privileges akin to the root user’s privileges, like so:
 >
-> ```
+> ```mysql
 > GRANT ALL PRIVILEGES ON *.* TO 'sammy'@'localhost' WITH GRANT OPTION;
 > ```
 >
