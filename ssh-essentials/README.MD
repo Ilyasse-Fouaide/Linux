@@ -5,21 +5,21 @@ SSH _(Secure Shell)_ is a secure protocol used as the primary means of connectin
 ## Table of content
 
 1. [Generating and Working with SSH Keys](#a)
-    * [Generating an SSH Key Pair](#b)
-    * [Copying your Public SSH Key to a Server with SSH-Copy-ID](#c)
-    * [Log In to Your Remote Server](#d)
-    * [Copying your Public SSH Key to a Server with SCP](#e)
+   * [Generating an SSH Key Pair](#b)
+   * [Copying your Public SSH Key to a Server with SSH-Copy-ID](#c)
+   * [Log In to Your Remote Server](#d)
+   * [Copying your Public SSH Key to a Server with SCP](#e)
 2. [Server-Side Configuration Options](#f)
-    * [Disabling Password Authentication](#g)
-    * [What is the SSH agent?](#h)
-    * [At the terminal, enter:](#i)
-    * [Add your private key to the ssh-agent](#j)
-    * [Get a list of all the keys currently added to ssh-agent using:](#k)
-    * [Try to connect to your remote server without asking for passphrase in every time](#l)
+   * [Disabling Password Authentication](#g)
+   * [What is the SSH agent?](#h)
+   * [At the terminal, enter:](#i)
+   * [Add your private key to the ssh-agent](#j)
+   * [Get a list of all the keys currently added to ssh-agent using:](#k)
+   * [Try to connect to your remote server without asking for passphrase in every time](#l)
 3. [Explain eval $(ssh-agent)](#m)
 4. [SSH agent forwarding](#n)
-    * [Local Machine (Your Computer):](#o)
-    * [Connect to the Web Server (AWS instance named web_server):](#s)
+   * [Local Machine (Your Computer):](#o)
+   * [Connect to the Web Server (AWS instance named web_server):](#s)
 
 ## Generating and Working with SSH Keys <a id="a"></a>
 
@@ -96,11 +96,12 @@ $ scp ~/.ssh/id_rsa.pub root@192.168.1.34:/home/user/.ssh/authorized_keys
   # if you want to copy for example image file from your local machine ↩
   # ↪ into your server
 $ scp -i ~/.ssh/id_rsa /path/to/your/image.png root@192.168.1.34:/home/user/Pictures/
+  # copying directory
+$ scp -i ~/.ssh/id_rsa -r /path/to/your/directory root@192.168.1.34:/home/user/Pictures/
 ```
 
 The ssh-copy-id command is an excellent tool to copy ssh public to the remote server securely.
 This will connect to the remote host, authenticate with your credentials, and execute the command you specified. The connection will immediately close afterwards.
-
 
 ### Server-Side Configuration Options <a id="f"></a>
 
@@ -225,52 +226,54 @@ To address this security risk, a more secure approach is required.
 
 Here's a step-by-step explanation:
 
-  1. Local Machine (Your Computer): <a id="o"></a>
+1. Local Machine (Your Computer): <a id="o"></a>
+   
+   * Generate RSA key pairs for web_server and back-end server: <a id="p"></a>
+     
+     ```bash
+     $ ssh-keygen -t rsa -b 4096
+     ```
+   
+   * Copy the public key to the web_server and the back_end server: <a id="q"></a>
+     
+     ```bash
+     $ ssh-copy-id -i ~/.ssh/id_rsa.pub ec2-user@web-server-ip-addr
+     $ ssh-copy-id -i ~/.ssh/id_rsa.pub ec2-user@back-end-ip-addr
+     ```
+   
+   * Add the RSA private key to the SSH agent: <a id="r"></a>
+     
+     ```bash
+     $ eval $(ssh-agent)
+     $ ssh-add ~/.ssh/id_rsa
+       # Verify the key is added
+     $ ssh-add -l
+     # output:
+     > 256 SHA256:<KEY_ID> example-user@localhost (ED25519)
+     ```
 
-      * Generate RSA key pairs for web_server and back-end server: <a id="p"></a>
+2. Connect to the Web Server (AWS instance named web_server): <a id="s"></a>
+   
+   ```bash
+   $ ssh -A ec2-user@web-server-ip-addr
+   ```
 
-          ```bash
-          $ ssh-keygen -t rsa -b 4096
-          ```
-
-      * Copy the public key to the web_server and the back_end server: <a id="q"></a>
-          ```bash
-          $ ssh-copy-id -i ~/.ssh/id_rsa.pub ec2-user@web-server-ip-addr
-          $ ssh-copy-id -i ~/.ssh/id_rsa.pub ec2-user@back-end-ip-addr
-          ```
-
-      * Add the RSA private key to the SSH agent: <a id="r"></a>
-          ```bash
-          $ eval $(ssh-agent)
-          $ ssh-add ~/.ssh/id_rsa
-            # Verify the key is added
-          $ ssh-add -l
-          # output:
-          > 256 SHA256:<KEY_ID> example-user@localhost (ED25519)
-          ```
-
-  2. Connect to the Web Server (AWS instance named web_server): <a id="s"></a>
-
-      ```bash
-      $ ssh -A ec2-user@web-server-ip-addr
-      ```
-
-  3. On the Web Server: <a id="t"></a>
-
-      * Check if the your private key is forwarded correctly: <a id="u"></a>
-
-          ```bash
-          $ ssh-add -l
-          # same output
-          > 256 SHA256:<KEY_ID> example-user@localhost (ED25519)
-          ```
-
-      * Connect to the Back-End Server: <a id="v"></a>
-
-          ```bash
-          $ ssh -A ec2-user@back-end-ip-addr
-          ```
-
-          * This step utilizes agent forwarding, allowing the web_server to use your local SSH agent. You don't need to copy the private key to the web_server, maintaining a more secure setup.
+3. On the Web Server: <a id="t"></a>
+   
+   * Check if the your private key is forwarded correctly: <a id="u"></a>
+     
+     ```bash
+     $ ssh-add -l
+     # same output
+     > 256 SHA256:<KEY_ID> example-user@localhost (ED25519)
+     ```
+   
+   * Connect to the Back-End Server: <a id="v"></a>
+     
+     ```bash
+     $ ssh -A ec2-user@back-end-ip-addr
+     ```
+     
+     * This step utilizes agent forwarding, allowing the web_server to use your local SSH agent. You don't need to copy the private key to the web_server, maintaining a more secure setup.
 
 By using SSH agent forwarding, your private key never leaves your local machine, and you can securely connect through intermediate servers. It's crucial to keep your systems and SSH keys secure, regularly update them, and follow best practices for securing your servers.
