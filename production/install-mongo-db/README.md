@@ -148,6 +148,3 @@ Verify that MongoDB is running correctly:
 ```bash
 sudo systemctl status mongod
 ```
-
-### Conclusion
-You should now have successfully upgraded MongoDB on your Ubuntu system! If you encounter any issues or have questions, feel free to ask.
