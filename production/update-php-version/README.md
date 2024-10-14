@@ -29,7 +29,7 @@ php8.1-readline
 php8.1-xml
 ```
 
-## Add repository
+## Installing PHP by Add repository
 
 Next, we’ll use the Linux package manager **apt** to target a repository called [ondrej/php PPA](#https://launchpad.net/~ondrej/+archive/ubuntu/php) which contains all the PHP software we’ll need:
 
