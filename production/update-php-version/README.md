@@ -1,4 +1,4 @@
-# Upgrading to PHP 8.3 (Ubuntu with Nginx)
+# Installing and Upgrading PHP (Ubuntu with Nginx)
 
 In addition to updating PHP, you will need to update any PHP related packages your server is using. To help with this, run the following command:
 
