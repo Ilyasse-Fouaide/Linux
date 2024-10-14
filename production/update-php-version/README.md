@@ -87,3 +87,37 @@ Then restart Nginx:
 ```bash
 sudo systemctl reload nginx
 ```
+
+---
+
+if you already have the PHP repository set up, you can easily update PHP by running the following commands:
+
+### Step 1: Update Package Index
+First, make sure your package index is up to date:
+
+```bash
+sudo apt update
+```
+
+### Step 2: Upgrade PHP
+To upgrade PHP along with any other packages, you can run:
+
+```bash
+sudo apt upgrade
+```
+
+If you want to specifically upgrade PHP without upgrading other packages, you can use:
+
+```bash
+sudo apt install --only-upgrade php
+```
+
+### Step 3: Verify the Installation
+Check the version of PHP to confirm the update:
+
+```bash
+php -v
+```
+
+### Conclusion
+This will update PHP to the latest version available in the repository. If you have any further questions or issues, feel free to ask!
