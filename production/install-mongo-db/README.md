@@ -2,18 +2,42 @@
 
 Installing MongoDB on a Linux system can vary slightly depending on your distribution. Here’s a step-by-step guide for installing MongoDB on Ubuntu. If you're using a different distribution, let me know!
 
-### Step 1: Import the Public Key
-Open a terminal and run the following command to import the MongoDB public GPG key:
+### Considerations
+
+## Platform Support
+
+MongoDB 8.0 Community Edition supports the following 64-bit Ubuntu LTS (long-term support) releases on x86_64 architecture:
+
+- 24.04 LTS ("Noble")
+- 22.04 LTS ("Jammy")
+- 20.04 LTS ("Focal")
+
+MongoDB only supports the 64-bit versions of these platforms. To determine which Ubuntu release your host is running, run the following command on the host's terminal:
 
 ```bash
-wget -qO - https://www.mongodb.org/static/pgp/server-8.0.asc | sudo apt-key add -
+cat /etc/lsb-release
+```
+
+### Step 1: Import the Public Key
+From a terminal, install gnupg and curl if they are not already available:
+
+```bash
+sudo apt-get install gnupg curl
+```
+
+To import the MongoDB public GPG key, run the following command:
+
+```bash
+curl -fsSL https://www.mongodb.org/static/pgp/server-8.0.asc | \
+   sudo gpg -o /usr/share/keyrings/mongodb-server-8.0.gpg \
+   --dearmor
 ```
 
 ### Step 2: Create the List File for MongoDB
 Next, create a list file for MongoDB. For Ubuntu 20.04 or 22.04, run:
 
 ```bash
-echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/8.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-8.0.list
+echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-8.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/8.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-8.0.list
 ```
 
 If you're using a different version of Ubuntu, replace `focal` with `jammy` for 22.10 or `bionic` for 18.04.
@@ -30,6 +54,14 @@ Install MongoDB with the following command:
 
 ```bash
 sudo apt install -y mongodb-org
+```
+
+Install specific release:
+
+To install a specific release, you must specify each component package individually along with the version number, as in the following example:
+
+```bash
+sudo apt-get install -y mongodb-org=8.0.0 mongodb-org-database=8.0.0 mongodb-org-server=8.0.0 mongodb-mongosh=8.0.0 mongodb-org-mongos=8.0.0 mongodb-org-tools=8.0.0
 ```
 
 ### Step 5: Start MongoDB
